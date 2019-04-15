@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Login Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js"></script>
+
+    <link th:href="@{/userpage/css/bootstrap.css}" rel="stylesheet" />
+    <link th:href="@{/userpage/css/app.css}" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="generic-container">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading"><span class="lead">Please select operation</span></div>
+            <div class="panel-body">
+                <div class="formcontainer">
+
+                    <form class="form-horizontal">
+
+                        <a href="/projectmanager/userpage/">Add User</a>
+                        <br/>
+                        <a href="/projectmanager/projectpage/">Add Project</a>
+                        <br/>
+
+                        <a href="/projectmanager/taskpage/">Add Task</a>
+                        <br/>
+
+                        <a href="/projectmanager/">Back</a>
+                        <br/>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

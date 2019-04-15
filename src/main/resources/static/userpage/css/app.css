@@ -1,0 +1,166 @@
+body, #mainWrapper {
+	height: 100%;
+	background-color: rgb(245, 245, 245);
+}
+
+body, .form-control {
+	font-size: 12px !important;
+}
+
+.floatRight {
+	float: right;
+	margin-right: 18px;
+}
+
+.floatCenter {
+	float: center;
+	margin-right: 9px;
+}
+
+.has-error {
+	color: red;
+}
+
+.generic-container {
+	width: 80%;
+	margin-left: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 20px;
+	background-color: #EAE7E7;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	box-shadow: 0 0 30px black;
+}
+
+.custom-width {
+	width: 80px !important;
+}
+
+.datepickerdemo md-content {
+	padding-bottom: 200px;
+}
+
+.datepickerdemo .validation-messages {
+	font-size: 11px;
+	color: darkred;
+	margin: 10px 0 0 25px;
+}
+
+.hello-title{
+    color: darkgreen;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+    padding: 16px;
+    background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Full-width input fields */
+input[type=date]{
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+select{
+	 width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+/* Overwrite default styles of hr */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.registerbtn:hover {
+    opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+    color: dodgerblue;
+    width: 50%;
+    padding: 10px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+
+table  {
+    border-collapse: collapse;
+}
+ 
+table td, th  {
+    padding: 5px;
+}
+ 
+.create-button  {
+    color: blue;
+    cursor: pointer;
+    padding: 5px;
+}
+.edit-button  {
+    padding: 2px 5px;
+    background: #25A6E1;
+    cursor: pointer;
+}
+ 
+.delete-button  {
+    padding: 2px 5px;
+    background: #CD5C5C;
+    cursor: pointer;
+}

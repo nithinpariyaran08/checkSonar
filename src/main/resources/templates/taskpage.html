@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Task Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js"></script>
+
+    <script th:src="@{/userpage/js/app/taskapp.js}"></script>
+
+    <link th:href="@{/userpage/css/bootstrap.css}" rel="stylesheet" />
+    <link th:href="@{/userpage/css/app.css}" rel="stylesheet" />
+</head>
+
+<body ng-app="taskCrudApp" ng-controller="TaskController">
+    <div class="generic-container">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading"><span class="lead">Specific Task </span></div>
+            <div class="panel-body">
+                <div class="formcontainer">
+
+                    <form ng-submit="submitTask()" name="taskForm" class="form-horizontal">
+                        <input type="hidden" ng-model="individualTask.id" />
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-2 control-lable" for="uname">Task Name</label>
+                                <div class="col-md-7">
+                                    <input type="text" ng-model="individualTask.taskName" id="uname" class="username form-control input-sm" placeholder="Enter your task" required ng-minlength="3" />
+                                </div>
+                            </div>
+                        </div>
+                        
+                     <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="priority">Priority</label>
+                            <div class="col-md-7">
+                                <input type="range" ng-model="individualTask.priority" id="priority" class="form-control input-sm" placeholder="Enter priority." required ng-pattern="ctrl.onlyIntegers"/>
+                                {{individualTask.priority}}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="status">Task Status</label>
+                            <div class="col-md-7">
+                                <input type="text" ng-model="individualTask.taskStatus" id="status" class="form-control input-sm" placeholder="Enter task status." required/>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-2 control-lable" for="startdate">Task Start Date</label>
+                                <div class="col-md-7">
+                                    <input type="date" id="startdate" name="input" ng-model="individualTask.startDate" class="form-control input-sm" placeholder="yyyy-MM-dd" />
+                                </div>
+                            </div>
+                        </div>
+                        
+                            <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-2 control-lable" for="endDate">Task End Date</label>
+                                <div class="col-md-7">
+                                    <input type="date" id="endDate" name="input" ng-model="individualTask.endDate" class="form-control input-sm" placeholder="yyyy-MM-dd" />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                         <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-2 control-lable" for="parenttask">Parent Task</label>
+                                <div class="col-md-7">
+                                    <select ng-model="individualTask.parentTaskDTO.id">
+                                        <option value="">--Select Parent Task --</option>
+                                        <option ng-repeat="parentTask in parentTasks" value="{{parentTask.id}}">{{parentTask.parentTask}}</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-2 control-lable" for="parenttask">Project</label>
+                                <div class="col-md-7">
+                                    <select ng-model="individualTask.projectDTO.projectId">
+                                        <option value="">--Select Project --</option>
+                                        <option ng-repeat="project in projects" value="{{project.projectId}}">{{project.projectName}}</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                         <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-2 control-lable" for="parenttask">User</label>
+                                <div class="col-md-7">
+                                
+                                
+                                 <select ng-model="individualTask.userDTO.empId">
+                                        <option value="">--Select Project Lead--</option>
+                                         <option ng-repeat="user in users" value="{{user.empId}}">{{user.name}}</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-actions floatRight">
+                                <input type="submit" valuecol-md-2 control-lable="{{!individualTask.id? 'Add Task' : 'Update Task'}}" class="btn btn-primary btn-sm">
+
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading"><span class="lead">List of Tasks </span></div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                 Search:<input ng-model="searchtxt" type="text" placeholder="Flter key">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+
+                                <th>NAME</th>
+                                <th>PRIORITY</th>
+                                 <th>STATUS</th>
+                                <th>START DATE</th>
+                                <th>END DATE</th>
+                                 <th>ACTIONS</th>
+                                <th width="10"></th>
+                                <th width="10"></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                              
+                                <tr ng-repeat="individualTask in individualTasks| filter : searchtxt">
+                                    <td>{{individualTask.taskName}}</td>
+                                    <td>{{individualTask.priority}}</td>
+                                    <td>{{individualTask.taskStatus}}</td>
+                                    <td>{{individualTask.startDate}}</td>
+                                    <td>{{individualTask.endDate}}</td>
+                                    <td>
+                                       <button type="button"  ng-click="editIndividualTask(individualTask)" class="btn btn-success custom-width">Edit</button> 
+                                   </td>
+                                      <td>
+                                     <button type="button"  ng-click="deleteIndividualTask(individualTask)" class="btn btn-success custom-width">Delete</button>
+                                   </td>
+                                </tr>
+                                
+                       
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
